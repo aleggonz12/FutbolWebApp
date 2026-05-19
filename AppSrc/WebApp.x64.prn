@@ -1,5 +1,5 @@
 Compiling Program: C:\DataFlex Projects\FutbolWebApp\AppSrc\WebApp.src
-Memory Available: 5794455552
+Memory Available: 11078574080
 1>Use AllWebAppClasses.pkg
 Using pre-compiled package ALLWEBAPPCLASSES.PKG
 Including file: AllWebAppClasses.x64.pkd    (C:\Program Files\DataFlex 25.0\Pkg\AllWebAppClasses.x64.pkd)
@@ -1505,8 +1505,8 @@ Including file: Dashboard.wo    (C:\DataFlex Projects\FutbolWebApp\AppSrc\Dashbo
 37401>>>            // 2. TARJETA DE EQUIPOS
 37401>>>            Object oEquipos_Tile is a cWebHtmlBox
 37403>>>                Set pbServerOnClick to True
-37404>>>                Set piColumnSpan to 4
-37405>>>                Set piColumnIndex to 6
+37404>>>                Set piColumnSpan to 12
+37405>>>                Set piColumnIndex to 0
 37406>>>                Set psCSSClass to "Tile LightAlternate"
 37407>>>                Set psHtml to '<div class="WebCon_Sizer" data-ServerOnClick="openview"><div Class="Tile_Title">Equipos</div><div class="Tile_Subtitle">Gestionar Equipos</div></div>'
 37408>>>                
@@ -1520,8 +1520,8 @@ Including file: Dashboard.wo    (C:\DataFlex Projects\FutbolWebApp\AppSrc\Dashbo
 37420>>>            // 3. TARJETA DE ENTRENADORES
 37420>>>            Object oEntrenadores_Tile is a cWebHtmlBox
 37422>>>                Set pbServerOnClick to True
-37423>>>                Set piColumnSpan to 4
-37424>>>                Set piColumnIndex to 8
+37423>>>                Set piColumnSpan to 12
+37424>>>                Set piColumnIndex to 0
 37425>>>                Set psCSSClass to "Tile DarkAlternate"
 37426>>>                Set psHtml to '<div class="WebCon_Sizer" data-ServerOnClick="openview"><div Class="Tile_Title">Entrenadores</div><div class="Tile_Subtitle">Gestionar Entrenadores</div></div>'
 37427>>>                
@@ -1535,8 +1535,8 @@ Including file: Dashboard.wo    (C:\DataFlex Projects\FutbolWebApp\AppSrc\Dashbo
 37439>>>            // 4. TARJETA DE JUGADORES
 37439>>>            Object oJugadores_Tile is a cWebHtmlBox
 37441>>>                Set pbServerOnClick to True
-37442>>>                Set piColumnSpan to 4
-37443>>>                Set piColumnIndex to 4
+37442>>>                Set piColumnSpan to 12
+37443>>>                Set piColumnIndex to 0
 37444>>>                Set psCSSClass to "Tile Dark"
 37445>>>                Set psHtml to '<div class="WebCon_Sizer" data-ServerOnClick="openview"><div Class="Tile_Title">Jugadores</div><div class="Tile_Subtitle">Gestionar Jugadores</div></div>'
 37446>>>                
@@ -1550,8 +1550,8 @@ Including file: Dashboard.wo    (C:\DataFlex Projects\FutbolWebApp\AppSrc\Dashbo
 37458>>>            // 5. TARJETA DE POSICIONES
 37458>>>            Object oPosiciones_Tile is a cWebHtmlBox
 37460>>>                Set pbServerOnClick to True
-37461>>>                Set piColumnSpan to 4
-37462>>>                Set piColumnIndex to 4
+37461>>>                Set piColumnSpan to 12
+37462>>>                Set piColumnIndex to 0
 37463>>>                Set psCSSClass to "Tile DarkAlternate"
 37464>>>                Set psHtml to '<div class="WebCon_Sizer" data-ServerOnClick="openview"><div Class="Tile_Title">Posiciones</div><div class="Tile_Subtitle">Gestionar Posiciones</div></div>'
 37465>>>                
@@ -3659,7 +3659,7 @@ Including file: SelectEquipo.wo    (C:\DataFlex Projects\FutbolWebApp\AppSrc\Sel
 39240>Send StartWebApp of oWebApp
 39241>
 Summary
-Memory Available: 5777240064
+Memory Available: 11055276032
 Total Warnings : 0
 Total Errors   : 0
 Total Symbols  : 25650
