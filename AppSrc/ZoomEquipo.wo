@@ -7,6 +7,9 @@ Use cWebPanel.pkg
 Use cWebMenuGroup.pkg
 Use cWebMenuItem.pkg
 Use cWebForm.pkg
+Use cWebTabContainer.pkg
+Use cWebTabPage.pkg
+Use SelectLiga.wo
 
 Use cligaDataDictionary.dd
 Use cequipoDataDictionary.dd
@@ -41,22 +44,49 @@ Object oZoomEquipo is a cWebView
             Set piColumnIndex to 0
             Set peLabelPosition to lpTop
             Set psLabel to "Nombre:"
-        End_Object 
+        End_Object
+
+        Object oWebTabContainer is a cWebTabContainer
+            Set pbFillHeight to True
+            Set piColumnSpan to 12
+            Set pbShowLabel to False
+
+        Object oPage1 is a cWebTabPage
+            Set piColumnCount to 12
+            Set psCaption to "Liga a la que pertenece"
+            WebSetResponsive piColumnCount rmMobile to 4
 
         Object oligaID is a cWebForm
             Entry_Item liga.ID
-            Set piColumnSpan to 3
+            Set piColumnSpan to 7
             Set piColumnIndex to 0
             Set peLabelPosition to lpTop
             Set psLabel to "Liga:"
             Set pbPromptButton to True
 
 // ToDo: Fill in the from-child parent Select view object name for navigate forward
-//            WebRegisterPath ntNavigateForward oSelectView
+            WebRegisterPath ntNavigateForward oSelectView
 
             Procedure OnPrompt
                 Send NavigatePath
             End_Procedure
+    End_Object  
+
+    Object oligaPais is a cWebForm
+                    Entry_Item liga.Pais
+                    Set piColumnSpan to 7
+                    Set piColumnIndex to 0
+                    Set peLabelPosition to lpTop
+                    Set psLabel to "Pais"
+                    Set pbPromptButton to True
+
+                    WebRegisterPath ntNavigateForward oSelectLiga
+
+                    Procedure OnPrompt
+                        Send NavigatePath
+                    End_Procedure
+                End_Object 
+            End_Object 
         End_Object 
     End_Object 
 

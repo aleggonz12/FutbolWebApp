@@ -11,6 +11,7 @@ Use cWebColumn.pkg
 Use ZoomLiga.wo
 
 Use cligaDataDictionary.dd
+Use cWebLabel.pkg
 
 Object oSelectLiga is a cWebView
     Set psCaption to "SelectLiga"
@@ -26,6 +27,17 @@ Object oSelectLiga is a cWebView
     Set Main_DD To oliga_DD
     Set Server  To oliga_DD
 
+    Object oEtiquetaCompeticion is a cWebLabel
+        Set psCaption to "Competición"
+        Set piColumnSpan to 7
+        Set psCSSClass to "LabelCaption"
+    End_Object
+
+    Object oEtiquetaPais is a cWebLabel
+        Set psCaption to "País"
+        Set piColumnIndex to 7
+        Set psCSSClass to "LabelCaption"
+    End_Object
 
     Object oList is a cWebList
         Set piColumnSpan to 0
@@ -38,27 +50,30 @@ Object oSelectLiga is a cWebView
         Object oligaNombre is a cWebColumn
             Entry_Item liga.Nombre
             Set psCaption to "liga.Nombre"
-            Set piWidth to 1243
+            Set piWidth to 643
+            Set psCSSClass to "RowCaption" 
         End_Object 
 
         Object oligaPais is a cWebColumn
             Entry_Item liga.Pais
             Set psCaption to "liga.Pais"
-            Set piWidth to 621
+            Set piWidth to 321
+            Set psCSSClass to "RowCaption"
         End_Object 
 
         Object oligaEquipos is a cWebColumn
             Entry_Item liga.Equipos
             Set psCaption to "liga.Equipos"
             Set piWidth to 124
+            Set psCSSClass to "RowCaption"
         End_Object 
 
         Object oDetailButton is a cWebColumnButton
             Set psCaption to "btn"
-            Set piWidth to 45
+            Set piWidth to 65
             Set pbFixedWidth to True
             Set pbResizable to False
-            Set piListRowSpan to 1
+            Set piListRowSpan to 2
             Set psBtnCssClass to "WebButtonIcon WebIcon_Info"
             Set peAlign to alignRight
 

@@ -7,6 +7,8 @@ Use cWebPanel.pkg
 Use cWebMenuGroup.pkg
 Use cWebMenuItem.pkg
 Use cWebForm.pkg
+Use cWebTabContainer.pkg
+Use cWebTabPage.pkg
 
 Use cligaDataDictionary.dd
 Use cequipoDataDictionary.dd
@@ -42,7 +44,7 @@ Object oZoomEntrenador is a cWebView
 
         Object oentrenadorNombre is a cWebForm
             Entry_Item entrenador.Nombre
-            Set piColumnSpan to 12
+            Set piColumnSpan to 6
             Set piColumnIndex to 0
             Set peLabelPosition to lpTop
             Set psLabel to "Nombre:"
@@ -50,7 +52,7 @@ Object oZoomEntrenador is a cWebView
 
         Object oentrenadorApellido is a cWebForm
             Entry_Item entrenador.Apellido
-            Set piColumnSpan to 12
+            Set piColumnSpan to 6
             Set piColumnIndex to 0
             Set peLabelPosition to lpTop
             Set psLabel to "Apellido:"
@@ -58,15 +60,25 @@ Object oZoomEntrenador is a cWebView
 
         Object oentrenadorNacionalidad is a cWebForm
             Entry_Item entrenador.Nacionalidad
-            Set piColumnSpan to 10
+            Set piColumnSpan to 6
             Set piColumnIndex to 0
             Set peLabelPosition to lpTop
             Set psLabel to "Nacionalidad:"
         End_Object 
 
+        Object oWebTabContainer is a cWebTabContainer
+            Set pbFillHeight to True
+            Set piColumnSpan to 12
+            Set pbShowLabel to False
+
+        Object oPage1 is a cWebTabPage
+                Set piColumnCount to 12
+                Set psCaption to "Equipo actual"
+                WebSetResponsive piColumnCount rmMobile to 4
+
         Object oequipoID is a cWebForm
             Entry_Item equipo.ID
-            Set piColumnSpan to 3
+            Set piColumnSpan to 6
             Set piColumnIndex to 0
             Set peLabelPosition to lpTop
             Set psLabel to "Equipo:"
@@ -75,11 +87,13 @@ Object oZoomEntrenador is a cWebView
 // ToDo: Fill in the from-child parent Select view object name for navigate forward
 //            WebRegisterPath ntNavigateForward oSelectView
 
-            Procedure OnPrompt
-                Send NavigatePath
-            End_Procedure
+                Procedure OnPrompt
+                    Send NavigatePath
+                End_Procedure
+            End_Object 
         End_Object 
-    End_Object 
+    End_Object
+End_Object
 
     Object oActionGroup is a cWebMenuGroup
 
