@@ -52,7 +52,7 @@ Object oDashboard is a cWebView
                                      '</div>')
                 End_Procedure
 
-            End_Procedure
+            End_Object
 
             // 1. TARJETA DE LIGAS
             Object oLigas_Tile is a cWebHtmlBox
