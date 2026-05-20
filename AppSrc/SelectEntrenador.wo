@@ -1,6 +1,4 @@
 ﻿// C:\DataFlex Projects\FutbolWebApp\AppSrc\SelectEntrenador.wo
-// SelectEntrenador
-//
 
 Use cWebView.pkg
 Use cWebList.pkg
@@ -8,194 +6,296 @@ Use cWebMenuGroup.pkg
 Use cWebMenuItem.pkg
 Use cWebColumnButton.pkg
 Use cWebColumn.pkg
-Use ZoomEntrenador.wo
+Use cWebLabel.pkg
 
 Use cligaDataDictionary.dd
 Use cequipoDataDictionary.dd
 Use centrenadorDataDictionary.dd
-Use cWebLabel.pkg
+
+Use ZoomEntrenador.wo
+Use ZoomEquipo.wo
+
 
 Object oSelectEntrenador is a cWebView
-    Set psCaption to "SelectEntrenador"
+
+    Set psCaption to "Seleccionar entrenador"
     Set peWebViewStyle to wvsDrilldown
     Set peViewType to vtSelect
     Set piColumnCount to 12
     Set pbShowCaption to False
     Set piMaxWidth to 1024
 
+
+
+
     Object oliga_DD is a cligaDataDictionary
-    End_Object 
+    End_Object
+
 
     Object oequipo_DD is a cequipoDataDictionary
-        Set DDO_Server To oliga_DD
-    End_Object 
+        Set DDO_Server to oliga_DD
+    End_Object
+
 
     Object oentrenador_DD is a centrenadorDataDictionary
-        Set DDO_Server To oequipo_DD
-    End_Object 
+        Set DDO_Server to oequipo_DD
+    End_Object
 
-    Set Main_DD To oentrenador_DD
-    Set Server  To oentrenador_DD
+
+    Set Main_DD to oentrenador_DD
+    Set Server  to oentrenador_DD
+
+
+
 
     Object oEtiquetaNombre is a cWebLabel
+
         Set psCaption to "Nombre"
-        Set piColumnSpan to 6
+        Set piColumnSpan to 4
         Set psCSSClass to "LabelCaption"
+
     End_Object
+
+
+
 
     Object oEtiquetaApellido is a cWebLabel
+
         Set psCaption to "Apellido"
-        Set piColumnSpan to 6
-        Set piColumnIndex to 6
+        Set piColumnSpan to 4
+        Set piColumnIndex to 4
         Set psCSSClass to "LabelCaption"
+
     End_Object
 
+
+
+
+    Object oEtiquetaNacionalidad is a cWebLabel
+
+        Set psCaption to "Nacionalidad"
+        Set piColumnSpan to 4
+        Set piColumnIndex to 8
+        Set psCSSClass to "LabelCaption"
+
+    End_Object
+
+
+
+
     Object oList is a cWebList
+
         Set piColumnSpan to 12
         Set psCSSClass to "MobileList"
+
         Set pbServerOnRowClick to True
         Set pbFillHeight to True
         Set pbShowHeader to False
+
         Set piSortColumn to 0
 
+
+
+
         Object oentrenadorNombre is a cWebColumn
+
             Entry_Item entrenador.Nombre
-            Set psCaption to "entrenador.Nombre"
-            Set piWidth to 545
+
+            Set psCaption to "Nombre"
+            Set piWidth to 350
+
             Set psCSSClass to "RowCaption"
-        End_Object 
+
+        End_Object
+
+
+
 
         Object oentrenadorApellido is a cWebColumn
+
             Entry_Item entrenador.Apellido
-            Set psCaption to "entrenador.Apellido"
-            Set piWidth to 445
-            Set psCSSClass to "RowCaption"
-        End_Object 
+
+            Set psCaption to "Apellido"
+            Set piWidth to 350
+
+        End_Object
+
+
+
 
         Object oentrenadorNacionalidad is a cWebColumn
+
             Entry_Item entrenador.Nacionalidad
-            Set psCaption to "entrenador.Nacionalidad"
-            Set piWidth to 521
-            Set psCSSClass to "RowCaption"
-        End_Object 
+
+            Set psCaption to "Nacionalidad"
+            Set piWidth to 300
+
+        End_Object
+
+
+
 
         Object oequipoID is a cWebColumn
+
             Entry_Item equipo.ID
-            Set psCaption to "entrenador.EquipoID"
-            Set piWidth to 124
-            Set psCSSClass to "RowCaption"
-        End_Object 
+
+            Set psCaption to "Equipo"
+            Set piWidth to 120
+
+        End_Object
+
+
+
 
         Object oDetailButton is a cWebColumnButton
-            Set psCaption to "btn"
-            Set piWidth to 70
+
+            Set psCaption to ""
+
+            Set piWidth to 60
             Set pbFixedWidth to True
             Set pbResizable to False
+
             Set piListRowSpan to 1
+
             Set psBtnCssClass to "WebButtonIcon WebIcon_Info"
+
             Set peAlign to alignRight
 
+
             WebRegisterPath ntNavigateForward oZoomEntrenador
+
 
             Procedure OnClick
                 Send NavigatePath
             End_Procedure
+
 
             Procedure OnGetNavigateForwardData tWebNavigateData ByRef NavigateData Handle hoToView
                 Move True to NavigateData.bReadOnly
             End_Procedure
 
-        End_Object 
+        End_Object
 
-// ToDo: Fill in the from-parent child Select view object name for navigate forward
-//        WebRegisterPath ntNavigateForward oSelectView
+
+
 
         Procedure OnRowClick String sRowId
+
             tWebNavigateData NavigateData
+
             Get GetNavigateData to NavigateData
 
+
             Case Begin
+
                 Case (NavigateData.eNavigateType = nfFromParent)
-// ToDo: Fill in the from-parent child Select view object name for navigate forward
-Error DFERR_PROGRAM "NavigateForward to this from-parent child Select view not yet defined"
-//                    Send NavigateForward of oSelectView Self
+
+                    Send NavigateForward of oZoomEntrenador Self
                     Case Break
+
 
                 Case (NavigateData.eNavigateType = nfFromChild)
+
                     Send NavigateClose Self
                     Case Break
+
 
                 Case (NavigateData.eNavigateType = nfFromMain)
-                    Send NavigateClose Self
+
+                    Send NavigateForward of oZoomEntrenador Self
                     Case Break
 
-                Case Else // must be nfUndefined
-// ToDo: Fill in the from-parent child Select view object name for navigate forward
-Error DFERR_PROGRAM "NavigateForward to this from-parent child Select view not yet defined"
-//                    Send NavigateForward of oSelectView Self
+
+                Case Else
+
+                    Send NavigateForward of oZoomEntrenador Self
 
             Case End
+
         End_Procedure
+
+
+
 
         Procedure OnGetNavigateForwardData tWebNavigateData ByRef NavigateData Handle hoToView
             Move True to NavigateData.bReadOnly
         End_Procedure
 
-    End_Object 
+    End_Object
+
+
+
 
     Object oActionGroup is a cWebMenuGroup
 
+
+
+
         Object oSearch is a cWebMenuItem
+
             Set psCSSClass to "WebPromptMenuItem"
-            Set psCaption to "Search"
+            Set psCaption to "Buscar"
 
             Procedure OnClick
                 Send Search of oList
             End_Procedure
 
-        End_Object 
+        End_Object
+
+
+
 
         Object oNewButton is a cWebMenuItem
+
             Set psCSSClass to "WebClearMenuItem"
-            Set psCaption to "New"
+            Set psCaption to "Nuevo entrenador"
+
 
             WebRegisterPath ntNavigateForward oZoomEntrenador
+
 
             Procedure OnClick
                 Send NavigatePath
             End_Procedure
 
+
             Procedure OnGetNavigateForwardData tWebNavigateData ByRef NavigateData Handle hoToView
                 Move True to NavigateData.bNewRecord
             End_Procedure
 
-        End_Object 
-    End_Object 
+        End_Object
+
+    End_Object
+
+
+
 
     Procedure OnNavigateForward tWebNavigateData NavigateData Integer hoInvokingView Integer hoInvokingObject
+
+        Forward Send OnNavigateForward NavigateData hoInvokingView hoInvokingObject
+
+
         WebSet pbRender of oNewButton to True
         WebSet pbRender of oDetailButton to True
 
+
         Case Begin
+
             Case (NavigateData.eNavigateType = nfFromParent)
-                // If from parent, this is a constrained drill down
                 Case Break
 
             Case (NavigateData.eNavigateType = nfFromChild)
-                // If from child, this is a probably a parent lookup from a Zoom
                 Case Break
 
             Case (NavigateData.eNavigateType = nfFromMain)
-                // If from main, this is a probably a main-file lookup from a Zoom
+
                 WebSet pbRender of oDetailButton to False
                 Case Break
 
-            Case Else // must be nfUndefined
-                // This may be the start of a drilldown query or this may be used for some kind of custom query.
+            Case Else
 
         Case End
 
     End_Procedure
 
-
-End_Object 
+End_Object
